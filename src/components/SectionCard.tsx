@@ -1,0 +1,31 @@
+
+import { ReactNode } from "react";
+
+export default function SectionCard({
+  className,
+  children,
+  id,
+  title,
+  icon,
+}: {
+  className?: string;
+  children: ReactNode;
+  id?: string;
+  title?: string;
+  icon?: ReactNode;
+}) {
+  return (
+    <section
+      id={id}
+      className={`bg-card border border-border rounded-xl shadow-lg p-6 mb-7 ${className || ""}`}
+    >
+      {title && (
+        <div className="flex items-center gap-2 mb-4">
+          {icon && <span className="text-primary">{icon}</span>}
+          <h2 className="font-playfair text-2xl font-semibold">{title}</h2>
+        </div>
+      )}
+      {children}
+    </section>
+  );
+}

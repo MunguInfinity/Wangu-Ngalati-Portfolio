@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -18,6 +19,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				playfair: ['Playfair Display', 'serif'],
+				inter: ['Inter', 'sans-serif'],
+				sans: ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -94,3 +100,4 @@ export default {
 	},
 	plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
