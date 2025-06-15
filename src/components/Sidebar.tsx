@@ -1,5 +1,5 @@
 
-import { Github, Linkedin } from "lucide-react";
+import { Github } from "lucide-react";
 
 export default function Sidebar() {
   return (
@@ -22,15 +22,26 @@ export default function Sidebar() {
         <div className="text-xs text-muted-foreground font-semibold">
           Contact Information
         </div>
-        <div className="text-[15px] leading-tight">
-          Ibex Hill, Lake Road, Lusaka
+        <div className="text-[15px] leading-tight">Ibex Hill, Lake Road, Lusaka</div>
+        <div className="flex flex-col sm:flex-row gap-1 items-start sm:items-center">
+          <span className="font-semibold shrink-0">Mobile:</span>
+          <div className="flex flex-col sm:flex-row gap-0.5 sm:gap-1">
+            <a
+              href="tel:+260978906006"
+              className="hover:underline transition text-primary break-words"
+            >
+              +260978906006
+            </a>
+            <span className="hidden sm:block">/</span>
+            <a
+              href="tel:+260761435664"
+              className="hover:underline transition text-primary break-words"
+            >
+              +260761435664
+            </a>
+          </div>
         </div>
-        <div className="flex gap-1 items-center">
-          <span className="font-semibold">Mobile:</span>
-          <a href="tel:+260978906006" className="hover:underline transition text-primary">+260978906006</a> /{" "}
-          <a href="tel:+260761435664" className="hover:underline transition text-primary">+260761435664</a>
-        </div>
-        <div className="flex gap-1 items-center">
+        <div className="flex flex-wrap gap-1 items-center">
           <span className="font-semibold">Email:</span>
           <a href="mailto:wangungalati@gmail.com" className="hover:underline transition text-primary">
             wangungalati@gmail.com

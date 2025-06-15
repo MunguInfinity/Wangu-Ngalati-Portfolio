@@ -268,7 +268,12 @@ export default function Index() {
         <SectionCard id="projects" title="Notable Projects">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
             {projects.map((p) => (
-              <div key={p.name} className="bg-secondary rounded-lg p-4 border border-border shadow-sm">
+              <div
+                key={p.name}
+                className="bg-secondary rounded-lg p-4 border border-border shadow-sm transition duration-200 ease-in-out hover:shadow-lg hover:scale-[1.03] hover:border-primary cursor-pointer"
+                tabIndex={0} // accessibility: make it focusable
+                aria-label={p.name}
+              >
                 <div className="font-semibold text-[16px] leading-tight">{p.name}</div>
                 <div className="text-[15px] mb-1">{p.desc}</div>
                 <div className="text-xs text-primary font-mono">{p.tech}</div>
@@ -280,7 +285,12 @@ export default function Index() {
         <SectionCard id="references" title="References">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
             {references.map((ref) => (
-              <div key={ref.name} className="bg-muted rounded border border-border px-4 py-2">
+              <div
+                key={ref.name}
+                className="bg-muted rounded border border-border px-4 py-2 transition duration-200 hover:scale-[1.03] hover:border-primary hover:shadow-lg cursor-pointer"
+                tabIndex={0}
+                aria-label={ref.name}
+              >
                 <div className="font-bold text-foreground">{ref.name}</div>
                 <div className="text-[15px]">{ref.title}</div>
                 <div className="flex items-center gap-2 text-sm text-foreground">
@@ -302,3 +312,5 @@ export default function Index() {
     </div>
   );
 }
+
+// Note: This file is getting quite large (over 300 lines). Consider asking me to refactor Index.tsx into smaller focused components for easier maintenance and future edits.

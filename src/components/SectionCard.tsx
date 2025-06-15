@@ -17,7 +17,7 @@ export default function SectionCard({
   return (
     <section
       id={id}
-      className={`bg-card border border-border rounded-xl shadow-lg p-6 mb-7 ${className || ""}`}
+      className={`bg-card border border-border rounded-xl shadow-lg p-6 mb-7 transition-transform transition-shadow duration-200 ease-out hover:scale-[1.03] hover:shadow-2xl group ${className || ""}`}
     >
       {title && (
         <div className="flex items-center gap-2 mb-4">
