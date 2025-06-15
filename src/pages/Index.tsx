@@ -7,6 +7,10 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ReferencesSection from "@/components/ReferencesSection";
 import { Github } from "lucide-react";
 import ProfileSection from "@/components/ProfileSection";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const educationData = [
   {
@@ -192,12 +196,47 @@ const references = [
 ];
 
 export default function Index() {
+  // --- NEW SESSION/AUTH LOGIC ---
+  const [user, setUser] = useState(null);
+  const [session, setSession] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      setUser(session?.user || null);
+    });
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user || null);
+    });
+    return () => {
+      subscription?.unsubscribe();
+    };
+  }, []);
+
+  // Optionally, redirect to /auth if not authenticated
+  // (For now, just show login/logout button in nav)
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setSession(null);
+    setUser(null);
+    navigate("/auth");
+  };
+
   return (
     <div className="w-full min-h-screen bg-background flex flex-col xl:flex-row font-inter">
       {/* Sidebar */}
       <Sidebar />
       {/* Main content */}
       <main className="w-full xl:ml-80 max-w-[1200px] xl:px-12 px-4 pt-10 xl:pt-20 pb-10 mx-auto space-y-8">
+        <div className="w-full flex justify-end mb-2">
+          {user ? (
+            <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
+          ) : (
+            <Button variant="outline" size="sm" onClick={() => navigate("/auth")}>Login</Button>
+          )}
+        </div>
         <ProfileSection />
         <ObjectiveSection />
         <EducationSection />
