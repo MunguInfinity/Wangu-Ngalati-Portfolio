@@ -1,73 +1,47 @@
-# Welcome to your Lovable project
+Wangu Ngalati – Software Engineer
+Welcome to my profile! I'm Wangu Ngalati, a passionate and detail-oriented Software Engineer based in Lusaka, Zambia. With a strong foundation in full-stack development, system integration, and cloud technologies, I bring hands-on experience in backend development, mobile applications, and database management.
 
-## Project info
+💡 Objective
+To contribute my skills in software engineering and problem-solving to innovative companies and projects that demand high-quality code and impactful digital solutions.
 
-**URL**: https://lovable.dev/projects/ad916636-1a62-4564-9877-f13e43ca01e5
+📚 Education
+BSc. Computer Science (Software Engineering) – DMI St. Eugene University
+GPA above 4.0, top student 2017–2019
 
-## How can I edit this code?
+🛠️ Skills & Technologies
+Languages: Java, JavaScript, Kotlin, Dart, Python, PHP, SQL, C/C++
 
-There are several ways of editing your application.
+Frameworks: Spring Boot, Flutter, Laravel, Node.js, React, Django
 
-**Use Lovable**
+Databases: MySQL, Firebase, MongoDB, Postgres
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ad916636-1a62-4564-9877-f13e43ca01e5) and start prompting.
+Cloud & Tools: AWS, GCP, Docker, Firebase Cloud Messaging, Google APIs
 
-Changes made via Lovable will be committed automatically to this repo.
+Design & Dev Tools: Adobe XD, Blender, CorelDRAW, Unreal Engine
 
-**Use your preferred IDE**
+🧪 Experience Highlights
+Abaleya Carpooling (2024–2025): Built backend, integrated payments & FCM.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Chrilan Technologies (2024): POS automation, barcode & OTP APIs.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+PrimeNet Solutions (2024): Gateway integrations & UI optimization.
 
-Follow these steps:
+Digital Treasure (2022–2023): File managers, mobile apps & Firebase services.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Texila & ZNBC Internships: Network setups, domain configs & computer installations.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+🌟 Notable Projects
+Nayenda Bus System – Real-time ticketing (Java, Firebase)
 
-# Step 3: Install the necessary dependencies.
-npm i
+Ubulimi Agro App – Farming advisory (Kotlin, Firebase)
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Vitundu Language App – Zambian language learning (Kotlin, Firebase)
 
-**Edit a file directly in GitHub**
+Smart Loan PDF Generator, ELK Launcher, Advanced ATM Simulator
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+📫 Contact
+📍 Ibex Hill, Lake Road, Lusaka
+📱 +260978906006 / +260761435664
+📧 wangungalati@gmail.com
+🔗 GitHub
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/ad916636-1a62-4564-9877-f13e43ca01e5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
