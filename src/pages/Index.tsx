@@ -6,6 +6,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ReferencesSection from "@/components/ReferencesSection";
 import { Github } from "lucide-react";
+import ProfileSection from "@/components/ProfileSection";
 
 const educationData = [
   {
@@ -197,6 +198,7 @@ export default function Index() {
       <Sidebar />
       {/* Main content */}
       <main className="w-full xl:ml-80 max-w-[1200px] xl:px-12 px-4 pt-10 xl:pt-20 pb-10 mx-auto space-y-8">
+        <ProfileSection />
         <ObjectiveSection />
         <EducationSection />
         <SkillsSection />
@@ -212,5 +214,4 @@ export default function Index() {
     </div>
   );
 }
-
 // This page is now cleaned up and all sections are their own components!
