@@ -230,13 +230,7 @@ export default function Index() {
       <Sidebar />
       {/* Main content */}
       <main className="w-full xl:ml-80 max-w-[1200px] xl:px-12 px-4 pt-10 xl:pt-20 pb-10 mx-auto space-y-8">
-        <div className="w-full flex justify-end mb-2">
-          {user ? (
-            <Button variant="outline" size="sm" onClick={handleLogout}>Logout</Button>
-          ) : (
-            <Button variant="outline" size="sm" onClick={() => navigate("/auth")}>Login</Button>
-          )}
-        </div>
+     
         <ProfileSection />
         <ObjectiveSection />
         <EducationSection />

@@ -1,13 +1,13 @@
-
 import SectionCard from "./SectionCard";
 import { Github } from "lucide-react";
+import ngalatiImg from "../assets/ngalati.jpeg";
 
 export default function ProfileSection() {
   return (
     <SectionCard id="profile" title="Profile" className="group-hover:scale-[1.03] transition-transform duration-200">
       <div className="flex flex-col items-center text-center gap-3">
         <img
-          src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=facearea&w=400&h=400&facepad=2"
+          src={ngalatiImg}
           alt="Wangu Ngalati"
           className="w-32 h-32 rounded-full object-cover border-4 border-primary shadow-md mx-auto mb-2"
         />
