@@ -215,14 +215,7 @@ export default function Index() {
     };
   }, []);
 
-  // Optionally, redirect to /auth if not authenticated
-  // (For now, just show login/logout button in nav)
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-    setSession(null);
-    setUser(null);
-    navigate("/auth");
-  };
+
 
   return (
     <div className="w-full min-h-screen bg-background flex flex-col xl:flex-row font-inter">
