@@ -1,4 +1,3 @@
-
 import SectionCard from "./SectionCard";
 
 const references = [
@@ -6,28 +5,27 @@ const references = [
     name: "Mr. Choko",
     title: "Human Resource Manager",
     phone: "+2609775561852",
-    address: "KPTF Office Park, Lake Road, Lusaka"
+    address: "KPTF Office Park, Lake Road, Lusaka, Zambia",
   },
   {
     name: "Mr. Luckson Mwanambulo",
     title: "Software Engineer",
     phone: "+260966088441",
-    address: "Hobbiton Investments, Lusaka"
+    address: "Hobbiton Investments, Lusaka, Zambia",
   },
   {
     name: "Mr. Zitha Tembo",
     title: "Software Engineer",
     phone: "+260976790772",
-    address: "Zambia Revenue Authority, Lusaka"
+    address: "Zambia Revenue Authority, Lusaka, Zambia",
   },
   {
     name: "Mr. Sundu Sensenta",
     title: "Chief Software Architect",
     phone: "+260972365878",
-    address: "Riteware Technology, Lusaka"
-  }
+    address: "Riteware Technology, Lusaka, Zambia",
+  },
 ];
-
 
 export default function ReferencesSection() {
   return (
@@ -43,8 +41,10 @@ export default function ReferencesSection() {
             <div className="font-bold text-foreground">{ref.name}</div>
             <div className="text-[15px]">{ref.title}</div>
             <div className="flex items-center gap-2 text-sm text-foreground">
-              <span>📞</span>
-              <a href={`tel:${ref.phone.replace(/\s/g, "")}`} className="hover:underline text-primary">{ref.phone}</a>
+              <span className="font-semibold text-muted-foreground">Tel:</span>
+              <a href={`tel:${ref.phone.replace(/\s/g, "")}`} className="hover:underline text-primary">
+                {ref.phone}
+              </a>
             </div>
             <div className="text-xs text-muted-foreground">{ref.address}</div>
           </div>

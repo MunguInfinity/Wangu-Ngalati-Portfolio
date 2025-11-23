@@ -19,7 +19,7 @@ export default function ProfileSection() {
         </span>
         <span className="text-sm text-muted-foreground">Lusaka, Zambia</span>
         <div className="text-xs text-muted-foreground font-semibold pt-2">Contact Information</div>
-        <div className="text-[15px]">Ibex Hill, Lake Road, Lusaka</div>
+        <div className="text-[15px]">Ibex Hill, Lake Road, Lusaka, Zambia</div>
         <div className="flex flex-col sm:flex-row gap-1 items-center justify-center">
           <span className="font-semibold">Mobile:</span>
           <div className="flex flex-col sm:flex-row gap-1">
@@ -47,7 +47,7 @@ export default function ProfileSection() {
             wangungalati@gmail.com
           </a>
         </div>
-        <div className="flex gap-2 mt-1 justify-center">
+        <div className="flex gap-2 mt-1 justify-center items-center">
           <a
             href="https://github.com/wangu-96"
             target="_blank"
@@ -56,6 +56,7 @@ export default function ProfileSection() {
           >
             <Github size={22} />
           </a>
+          <span className="text-sm text-primary">github.com/wangu-96</span>
         </div>
       </div>
     </SectionCard>
