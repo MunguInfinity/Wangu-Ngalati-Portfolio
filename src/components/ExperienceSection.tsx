@@ -1,19 +1,30 @@
+
+import { FileDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { jsPDF } from "jspdf";
 import SectionCard from "./SectionCard";
 
 const experience = [
   {
     company: "EMU Technologies Limited",
     role: "Backend Developer (Ongoing)",
-    period: "May 2025 - Present",
+    period: "May 2025 – Present",
     description: [
-      "Developed and maintained multiple client websites, including fiatzambia.com, abaleyadriving.com, quartanmining.com, dropshipltd.com, semassmetals.com, sophonzambia.com, komelazm.com, copperpotzm.com, kutwilamedia.com, and abaleya.name.",
-      "Built and deployed emuzm.com as a reseller platform with domain/IP binding, cPanel/WHM configuration, and Outlook email integration.",
-      "Designed a daily quote system delivering motivational, health, and fitness messages through automated scheduling.",
-      "Managed Laravel/PHP backend updates and MySQL changes hosted on AWS EC2.",
-      "Configured alerts and SMS notifications for Abaleya to flag new users, vehicle registrations, and trip approvals.",
-      "Implemented in-app notifications and approval alerts to strengthen platform communication.",
-      "Provided testing, IT support, and hardware/software servicing to keep operations stable.",
-    ],
+      "Developed and managed multiple client websites, including: fiatzambia.com, abaleyadriving.com, quartanmining.com, dropshipltd.com, semassmetals.com, sophonzambia.com, komelazm.com, copperpotzm.com, kutwilamedia.com, and abaleya.name.",
+      "Built and deployed emuzm.com, a reseller platform providing web hosting services, including domain and IP binding, cPanel/WHM configuration, and email integration for Outlook.",
+      "Designed and implemented a daily quote system delivering motivational, health, and fitness messages to users via automated scheduling.",
+      "Managed backend development in PHP and Laravel, including database modifications and updates on MySQL hosted on AWS EC2.",
+      "Configured and monitored system alerts and SMS notifications for the Abaleya carpooling platform to notify management of new users, vehicle registrations, and trip approvals.",
+      "Implemented in-app notifications and approval alerts to improve communication between the platform and users.",
+      "Integrated Agora live streaming services, including real-time video streaming features.",
+      "Implemented WebSocket-based functionality for live view counts and real-time comments on live streams.",
+      "Configured and utilized Cloudflare services, including Cloudflare Stream and Cloudflare Images for media delivery and optimization.",
+      "Implemented adaptive bitrate streaming (ABS) using AWS S3 and MediaConvert, as well as Cloudflare, enabling seamless video quality progression from 360p to 1080p.",
+      "Managed DNS configurations, including A record updates and domain transfers.",
+      "Configured and supported Outlook email accounts for clients and internal use.",
+      "Performed computer installation, maintenance, and servicing (hardware and software).",
+      "Performed system testing, IT support, and hardware/software servicing to ensure smooth operations across the company."
+    ]
   },
   {
     company: "Abaleya Carpooling",
@@ -102,9 +113,134 @@ const experience = [
   },
 ];
 
+function generateExperiencePDF() {
+  const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const margin = 18;
+  const contentW = pageW - margin * 2;
+  let y = 0;
+
+  const checkPage = (needed: number) => {
+    if (y + needed > pageH - 14) {
+      doc.addPage();
+      y = 18;
+    }
+  };
+
+  // Header background
+  doc.setFillColor(30, 41, 59);
+  doc.rect(0, 0, pageW, 36, "F");
+
+  // Title
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(18);
+  doc.setTextColor(255, 255, 255);
+  doc.text("Wangu Ngalati", margin, 15);
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.setTextColor(148, 163, 184);
+  doc.text("Professional Experience", margin, 23);
+
+  doc.setFontSize(8);
+  doc.setTextColor(100, 116, 139);
+  doc.text(`Generated ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`, pageW - margin, 23, { align: "right" });
+
+  // Accent line
+  doc.setDrawColor(99, 102, 241);
+  doc.setLineWidth(0.8);
+  doc.line(margin, 30, pageW - margin, 30);
+
+  y = 44;
+
+  experience.forEach((exp, idx) => {
+    const bulletLines: string[][] = exp.description.map((pt) =>
+      doc.splitTextToSize(`• ${pt}`, contentW - 6)
+    );
+    const bulletHeight = bulletLines.reduce((sum, lines) => sum + lines.length * 5.2, 0);
+    const blockHeight = 22 + bulletHeight + 6;
+
+    checkPage(blockHeight);
+
+    // Card background
+    const isEven = idx % 2 === 0;
+    doc.setFillColor(isEven ? 248 : 243, isEven ? 250 : 246, isEven ? 252 : 250);
+    doc.roundedRect(margin - 2, y - 5, contentW + 4, blockHeight, 3, 3, "F");
+
+    // Left accent bar
+    doc.setFillColor(99, 102, 241);
+    doc.roundedRect(margin - 2, y - 5, 3, blockHeight, 1, 1, "F");
+
+    // Role
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.setTextColor(30, 41, 59);
+    doc.text(exp.role, margin + 5, y + 1);
+
+    // Company badge area
+    const roleWidth = doc.getTextWidth(exp.role);
+    doc.setFillColor(224, 231, 255);
+    const companyText = exp.company;
+    const companyW = doc.getTextWidth(companyText) + 6;
+    doc.roundedRect(margin + 5 + roleWidth + 4, y - 4, companyW, 7, 2, 2, "F");
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8.5);
+    doc.setTextColor(67, 56, 202);
+    doc.text(companyText, margin + 5 + roleWidth + 7, y + 0.5);
+
+    // Period
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(exp.period, margin + 5, y + 8);
+
+    // Divider
+    doc.setDrawColor(226, 232, 240);
+    doc.setLineWidth(0.3);
+    doc.line(margin + 5, y + 10, margin + contentW - 2, y + 10);
+
+    y += 14;
+
+    // Bullets
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(51, 65, 85);
+    bulletLines.forEach((lines) => {
+      checkPage(lines.length * 5.2 + 2);
+      doc.text(lines, margin + 6, y);
+      y += lines.length * 5.2;
+    });
+
+    y += 10;
+  });
+
+  // Footer
+  doc.setFillColor(30, 41, 59);
+  doc.rect(0, pageH - 12, pageW, 12, "F");
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7.5);
+  doc.setTextColor(148, 163, 184);
+  doc.text("Wangu Ngalati  |  Portfolio", margin, pageH - 4.5);
+  doc.text("Confidential", pageW - margin, pageH - 4.5, { align: "right" });
+
+  doc.save("Wangu-Ngalati-Experience.pdf");
+}
+
 export default function ExperienceSection() {
   return (
     <SectionCard id="experience" title="Professional Experience">
+      <div className="flex justify-end mb-3">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={generateExperiencePDF}
+          className="gap-2 border-primary/40 text-primary hover:bg-primary/10 hover:border-primary transition-colors"
+        >
+          <FileDown size={15} />
+          Export PDF
+        </Button>
+      </div>
       <div className="flex flex-col gap-7">
         {experience.map((exp) => (
           <div
