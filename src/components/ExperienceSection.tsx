@@ -1,4 +1,7 @@
 
+import { FileDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { jsPDF } from "jspdf";
 import SectionCard from "./SectionCard";
 
 const experience = [
@@ -111,10 +114,117 @@ const experience = [
 ];
 
 
+function generateExperiencePDF() {
+  const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const margin = 18;
+  const contentW = pageW - margin * 2;
+  let y = 0;
+
+  const checkPage = (needed: number) => {
+    if (y + needed > pageH - 14) { doc.addPage(); y = 18; }
+  };
+
+  // Header
+  doc.setFillColor(30, 41, 59);
+  doc.rect(0, 0, pageW, 36, "F");
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(18);
+  doc.setTextColor(255, 255, 255);
+  doc.text("Wangu Ngalati", margin, 15);
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.setTextColor(148, 163, 184);
+  doc.text("Professional Experience", margin, 23);
+  doc.setFontSize(8);
+  doc.setTextColor(100, 116, 139);
+  doc.text(`Generated ${new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`, pageW - margin, 23, { align: "right" });
+  doc.setDrawColor(99, 102, 241);
+  doc.setLineWidth(0.8);
+  doc.line(margin, 30, pageW - margin, 30);
+
+  y = 44;
+
+  experience.forEach((exp, idx) => {
+    const bulletLines: string[][] = exp.description.map((pt) =>
+      doc.splitTextToSize(`• ${pt}`, contentW - 6)
+    );
+    const bulletHeight = bulletLines.reduce((sum, lines) => sum + lines.length * 5.2, 0);
+    const blockHeight = 22 + bulletHeight + 6;
+    checkPage(blockHeight);
+
+    // Card background + accent bar
+    const isEven = idx % 2 === 0;
+    doc.setFillColor(isEven ? 248 : 243, isEven ? 250 : 246, isEven ? 252 : 250);
+    doc.roundedRect(margin - 2, y - 5, contentW + 4, blockHeight, 3, 3, "F");
+    doc.setFillColor(99, 102, 241);
+    doc.roundedRect(margin - 2, y - 5, 3, blockHeight, 1, 1, "F");
+
+    // Role
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(11);
+    doc.setTextColor(30, 41, 59);
+    doc.text(exp.role, margin + 5, y + 1);
+
+    // Company badge
+    const roleWidth = doc.getTextWidth(exp.role);
+    const companyW = doc.getTextWidth(exp.company) + 6;
+    doc.setFillColor(224, 231, 255);
+    doc.roundedRect(margin + 5 + roleWidth + 4, y - 4, companyW, 7, 2, 2, "F");
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(8.5);
+    doc.setTextColor(67, 56, 202);
+    doc.text(exp.company, margin + 5 + roleWidth + 7, y + 0.5);
+
+    // Period + divider
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(8.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text(exp.period, margin + 5, y + 8);
+    doc.setDrawColor(226, 232, 240);
+    doc.setLineWidth(0.3);
+    doc.line(margin + 5, y + 10, margin + contentW - 2, y + 10);
+    y += 14;
+
+    // Bullets
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(51, 65, 85);
+    bulletLines.forEach((lines) => {
+      checkPage(lines.length * 5.2 + 2);
+      doc.text(lines, margin + 6, y);
+      y += lines.length * 5.2;
+    });
+    y += 10;
+  });
+
+  // Footer
+  doc.setFillColor(30, 41, 59);
+  doc.rect(0, pageH - 12, pageW, 12, "F");
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(7.5);
+  doc.setTextColor(148, 163, 184);
+  doc.text("Wangu Ngalati  |  Portfolio", margin, pageH - 4.5);
+  doc.text("Confidential", pageW - margin, pageH - 4.5, { align: "right" });
+
+  doc.save("Wangu-Ngalati-Experience.pdf");
+}
+
 export default function ExperienceSection() {
   return (
     <SectionCard id="experience" title="Professional Experience">
-
+      <div className="flex justify-end mb-3">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={generateExperiencePDF}
+          className="gap-2 border-primary/40 text-primary hover:bg-primary/10 hover:border-primary transition-colors"
+        >
+          <FileDown size={15} />
+          Export PDF
+        </Button>
+      </div>
       <div className="flex flex-col gap-7">
         {experience.map((exp) => (
           <div
