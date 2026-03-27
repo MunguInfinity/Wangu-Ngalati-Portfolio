@@ -1,5 +1,7 @@
 import SectionCard from "./SectionCard";
-import { Github } from "lucide-react";
+import { FileDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { generatePortfolioPDF } from "@/utils/generatePortfolioPDF";
 import ngalatiImg from "../assets/ngalati.jpeg";
 
 export default function ProfileSection() {
@@ -47,17 +49,15 @@ export default function ProfileSection() {
             wangungalati@gmail.com
           </a>
         </div>
-        <div className="flex gap-2 mt-1 justify-center items-center">
-          <a
-            href="https://github.com/wangu-96"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-1.5 bg-muted rounded-full hover:bg-primary hover:text-white transition"
-          >
-            <Github size={22} />
-          </a>
-          <span className="text-sm text-primary">github.com/wangu-96</span>
-        </div>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={generatePortfolioPDF}
+          className="mt-2 gap-2 border-primary/40 text-primary hover:bg-primary/10 hover:border-primary transition-colors"
+        >
+          <FileDown size={15} />
+          Generate PDF
+        </Button>
       </div>
     </SectionCard>
   );
