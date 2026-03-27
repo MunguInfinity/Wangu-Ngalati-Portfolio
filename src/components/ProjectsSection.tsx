@@ -29,6 +29,12 @@ const projects = [
     tech: "",
   },
   {
+    name: "Elk File Manager",
+    url: "https://play.google.com/store/apps/details?id=org.rff.digitres.elkfilemanager",
+    desc: "A file manager app built and published to the Google Play Store.",
+    tech: "",
+  },
+  {
     name: "Advanced Calculator & ATM Simulator",
     desc: "Simulates ATM transactions and performs complex calculations.",
     tech: "Java, MySQL",
@@ -40,8 +46,8 @@ const projects = [
   },
   {
     name: "Ubulimi (Agro-Advisory Application)",
-    desc: "Provides crop decision-making tools and weather predictions for farmers.",
-    tech: "Kotlin, Firebase",
+    desc: "Provides crop decision-making tools and weather predictions for farmers. Also features a web version that fetches real climate data from the Copernicus Data Store via a FastAPI server, filters it by day, month, and year, and plots it on interactive graphs.",
+    tech: "Kotlin, Firebase · Web: Laravel, FastAPI, Copernicus Data Store",
   },
   {
     name: "Vitundu Language App",
@@ -96,9 +102,10 @@ export default function ProjectsSection() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-[16px] leading-tight text-primary hover:underline"
+                className="inline-flex items-center gap-1.5 font-semibold text-[16px] leading-tight text-primary hover:underline"
               >
                 {project.name}
+                <ExternalLink size={14} />
               </a>
             ) : (
               <div className="font-semibold text-[16px] leading-tight">{project.name}</div>
