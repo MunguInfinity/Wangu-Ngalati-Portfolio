@@ -25,6 +25,13 @@ const references = [
     phone: "+260972365878",
     address: "Riteware Technology, Lusaka, Zambia",
   },
+  {
+    name: "Mr. Percy Nguni",
+    title: "Founder, E-Study & Software Developer",
+    phone: "+260967924233",
+    phone2: "+260974176847",
+    address: "E-Study, Zambia",
+  },
 ];
 
 export default function ReferencesSection() {
@@ -46,6 +53,14 @@ export default function ReferencesSection() {
                 {ref.phone}
               </a>
             </div>
+            {"phone2" in ref && ref.phone2 && (
+              <div className="flex items-center gap-2 text-sm text-foreground">
+                <span className="font-semibold text-muted-foreground">Tel:</span>
+                <a href={`tel:${ref.phone2.replace(/\s/g, "")}`} className="hover:underline text-primary">
+                  {ref.phone2}
+                </a>
+              </div>
+            )}
             <div className="text-xs text-muted-foreground">{ref.address}</div>
           </div>
         ))}
