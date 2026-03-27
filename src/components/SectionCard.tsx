@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 //section card component
 //this component is used to create a section card with a title and an icon
 //it is used to create the section cards for the portfolio
-//it is used to create the section cards for the portfolio
+
 export default function SectionCard({
   className,
   children,
