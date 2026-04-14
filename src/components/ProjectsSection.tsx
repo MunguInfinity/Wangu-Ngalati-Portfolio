@@ -1,51 +1,19 @@
 import { ExternalLink } from "lucide-react";
 import SectionCard from "./SectionCard";
+import { projects } from "../data/portfolioData";
 
 const clientSites = [
-  { name: "fiatzambia.com", url: "https://fiatzambia.com" },
+  { name: "fiatzambia.com",     url: "https://fiatzambia.com" },
   { name: "abaleyadriving.com", url: "https://abaleyadriving.com" },
-  { name: "quartanmining.com", url: "https://quartanmining.com" },
-  { name: "dropshipltd.com", url: "https://dropshipltd.com" },
-  { name: "semassmetals.com", url: "https://semassmetals.com" },
-  { name: "sophonzambia.com", url: "https://sophonzambia.com" },
-  { name: "komelazm.com", url: "https://komelazm.com" },
-  { name: "copperpotzm.com", url: "https://copperpotzm.com" },
-  { name: "kutwilamedia.com", url: "https://kutwilamedia.com" },
-  { name: "abaleya.name", url: "https://abaleya.name" },
-  { name: "emuzm.com", url: "https://emuzm.com" },
-];
-
-const projects = [
-  {
-    name: "Advanced Calculator & ATM Simulator",
-    desc: "Simulates ATM transactions and performs complex calculations.",
-    tech: "Java, MySQL",
-  },
-  {
-    name: "Nayenda Bus Ticketing System",
-    desc: "Real-time ticketing application for traveling customers.",
-    tech: "Java, Firebase (Authentication, Storage, Realtime Database)",
-  },
-  {
-    name: "Ubulimi (Agro-Advisory Application)",
-    desc: "Provides crop decision-making tools and weather predictions for farmers.",
-    tech: "Kotlin, Firebase",
-  },
-  {
-    name: "Vitundu Language App",
-    desc: "Interactive learning platform that teaches Zambian children local languages.",
-    tech: "Kotlin, Firebase",
-  },
-  {
-    name: "Murder Hornet Character Design",
-    desc: "Designed a character for ProSam Studio animations.",
-    tech: "Krita, Huion Tablet, Blender",
-  },
-  {
-    name: "Graphics & Logo Design",
-    desc: "Designed logos, posters, brochures, and letterheads for various companies.",
-    tech: "Photopea, CorelDRAW, Photoshop",
-  },
+  { name: "quartanmining.com",  url: "https://quartanmining.com" },
+  { name: "dropshipltd.com",    url: "https://dropshipltd.com" },
+  { name: "semassmetals.com",   url: "https://semassmetals.com" },
+  { name: "sophonzambia.com",   url: "https://sophonzambia.com" },
+  { name: "komelazm.com",       url: "https://komelazm.com" },
+  { name: "copperpotzm.com",    url: "https://copperpotzm.com" },
+  { name: "kutwilamedia.com",   url: "https://kutwilamedia.com" },
+  { name: "abaleya.name",       url: "https://abaleya.name" },
+  { name: "emuzm.com",          url: "https://emuzm.com" },
 ];
 
 export default function ProjectsSection() {
@@ -71,6 +39,7 @@ export default function ProjectsSection() {
           ))}
         </div>
       </div>
+
       <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
         {projects.map((project) => (
           <div

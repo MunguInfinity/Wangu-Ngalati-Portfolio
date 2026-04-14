@@ -52,7 +52,7 @@ export default function ProfileSection() {
         <Button
           variant="outline"
           size="sm"
-          onClick={generatePortfolioPDF}
+          onClick={() => { generatePortfolioPDF(); }}
           className="mt-2 gap-2 border-primary/40 text-primary hover:bg-primary/10 hover:border-primary transition-colors"
         >
           <FileDown size={15} />

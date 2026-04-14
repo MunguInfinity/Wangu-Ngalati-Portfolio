@@ -1,56 +1,5 @@
 import SectionCard from "./SectionCard";
-
-const skills = {
-  "Programming Languages": [
-    "Java",
-    "JavaScript",
-    "Kotlin",
-    "Dart",
-    "Python",
-    "PHP",
-    "HTML",
-    "CSS",
-    "C++",
-    "C",
-    "SQL",
-    "Golang",
-  ],
-  "Frameworks & Libraries": [
-    "JQuery",
-    "Android Studio",
-    "Flutter",
-    "Laravel",
-    "Yii",
-    "Django",
-    "Node.js (Express)",
-    "React",
-    "Bootstrap",
-    "Material UI",
-    "Spring Boot",
-  ],
-  Databases: [
-    "MySQL",
-    "Firebase (Firestore, Realtime Database)",
-    "MongoDB",
-    "Postgres",
-    "MariaDB",
-  ],
-  "DevOps & Containerization": ["Docker", "Docker Compose"],
-  "Cloud & Deployment": ["AWS (EC2, S3)", "Google Cloud Platform", "cPanel", "WHM"],
-  "Google APIs Integration": [
-    "Messaging API",
-    "Directions API",
-    "Routing API",
-    "Geolocation API",
-  ],
-  "Other Skills": [
-    "UI/UX Design (Adobe XD, JustInMind)",
-    "Game Development (Unreal Engine)",
-    "Graphics Design (Photopea, CorelDRAW, Photoshop)",
-    "3D Animation (Blender)",
-    "Runtime Environments (Node.js)",
-  ],
-};
+import { skills } from "../data/portfolioData";
 
 export default function SkillsSection() {
   return (
