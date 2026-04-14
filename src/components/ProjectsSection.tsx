@@ -1,11 +1,9 @@
 import { ExternalLink } from "lucide-react";
 import SectionCard from "./SectionCard";
-import { projects } from "../data/portfolioData";
 
 const clientSites = [
   { name: "fiatzambia.com",     url: "https://fiatzambia.com" },
   { name: "abaleyadriving.com", url: "https://abaleyadriving.com" },
-<<<<<<< HEAD
   { name: "quartanmining.com",  url: "https://quartanmining.com" },
   { name: "dropshipltd.com",    url: "https://dropshipltd.com" },
   { name: "semassmetals.com",   url: "https://semassmetals.com" },
@@ -15,7 +13,6 @@ const clientSites = [
   { name: "kutwilamedia.com",   url: "https://kutwilamedia.com" },
   { name: "abaleya.name",       url: "https://abaleya.name" },
   { name: "emuzm.com",          url: "https://emuzm.com" },
-=======
   { name: "quartanmining.com", url: "https://quartanmining.com" },
   { name: "dropshipltd.com", url: "https://dropshipltd.com" },
   { name: "semassmetals.com", url: "https://semassmetals.com" },
@@ -76,7 +73,6 @@ const projects = [
     desc: "Designed logos, posters, brochures, and letterheads for various companies.",
     tech: "Photopea, CorelDRAW, Photoshop",
   },
->>>>>>> 3d4930cdbbbe378f3eac2bfdef6dda09dabd3cc3
 ];
 
 export default function ProjectsSection() {

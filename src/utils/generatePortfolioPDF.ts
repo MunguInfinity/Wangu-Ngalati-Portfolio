@@ -99,7 +99,7 @@ export async function generatePortfolioPDF() {
 
   // ── NAME ───────────────────────────────────────────────────────────────────
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
+  doc.setFontSize(18);
   doc.setTextColor(...BLUE);
   doc.text("Wangu Ngalati", pageW / 2, y, { align: "center" });
   y += 7;
