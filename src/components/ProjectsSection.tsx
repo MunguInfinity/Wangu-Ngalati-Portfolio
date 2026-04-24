@@ -22,6 +22,7 @@ const clientSites = [
   { name: "kutwilamedia.com", url: "https://kutwilamedia.com" },
   { name: "abaleya.name", url: "https://abaleya.name" },
   { name: "emuzm.com", url: "https://emuzm.com" },
+  {name:"presidenthh2026.com", url: "https://presidenthh2026.com"}
 ];
 
 const projects = [
