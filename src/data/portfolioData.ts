@@ -54,9 +54,10 @@ export const skills: Record<string, string[]> = {
 export const experience = [
   {
     company: "EMU Technologies Limited",
-    role: "Backend Developer (Ongoing)",
+    role: "Software Lead Developer (Ongoing)",
     period: "May 2025 – Present",
     description: [
+      "Led the development team by assigning tasks, conducting code reviews, and delivering performance reports to management.",
       "Developed and managed multiple client websites, including: fiatzambia.com, abaleyadriving.com, quartanmining.com, dropshipltd.com, semassmetals.com, sophonzambia.com, komelazm.com, copperpotzm.com, kutwilamedia.com, and abaleya.name.",
       "Built and deployed emuzm.com, a reseller platform providing web hosting services, including domain and IP binding, cPanel/WHM configuration, and email integration for Outlook.",
       "Designed and implemented a daily quote system delivering motivational, health, and fitness messages to users via automated scheduling.",
