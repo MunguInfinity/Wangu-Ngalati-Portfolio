@@ -1,5 +1,4 @@
 import { jsPDF } from "jspdf";
-import ngalatiImg from "../assets/ngalati.jpeg";
 import {
   objective,
   educationData,
@@ -8,38 +7,6 @@ import {
   projects,
   references,
 } from "../data/portfolioData";
-
-// Load an image URL into an HTMLImageElement (browser only).
-function loadImage(src: string): Promise<HTMLImageElement> {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = src;
-  });
-}
-
-// Render the image into a circular canvas clip and return a PNG data URL.
-function circularCrop(img: HTMLImageElement, sizePx = 300): string {
-  const canvas = document.createElement("canvas");
-  canvas.width = sizePx;
-  canvas.height = sizePx;
-  const ctx = canvas.getContext("2d")!;
-
-  // Clip to a perfect circle
-  ctx.beginPath();
-  ctx.arc(sizePx / 2, sizePx / 2, sizePx / 2, 0, Math.PI * 2);
-  ctx.closePath();
-  ctx.clip();
-
-  // Centre-crop the source image into the square canvas
-  const minDim = Math.min(img.width, img.height);
-  const sx = (img.width  - minDim) / 2;
-  const sy = (img.height - minDim) / 2;
-  ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, sizePx, sizePx);
-
-  return canvas.toDataURL("image/png");
-}
 
 export async function generatePortfolioPDF() {
   const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
@@ -53,7 +20,7 @@ export async function generatePortfolioPDF() {
   const DARK   = [33,  33,  33] as [number, number, number];   // body text
   const GRAY   = [100, 100, 100] as [number, number, number];  // period / meta
 
-  let y = 0;
+  let y = 20;
 
   // ── helpers ────────────────────────────────────────────────────────────────
 
@@ -78,24 +45,6 @@ export async function generatePortfolioPDF() {
     doc.line(margin, y, margin + contentW, y);
     y += 5;
   };
-
-  // ── PHOTO (circular) ───────────────────────────────────────────────────────
-  try {
-    const img = await loadImage(ngalatiImg);
-    const circularDataUrl = circularCrop(img, 400);
-    const diameter = 38; // mm — equal width & height makes it a circle in the PDF
-    const photoX = (pageW - diameter) / 2;
-    y = 12;
-    // Place the circular PNG image
-    doc.addImage(circularDataUrl, "PNG", photoX, y, diameter, diameter);
-    // Decorative ring around the circle
-    doc.setDrawColor(...BLUE);
-    doc.setLineWidth(0.8);
-    doc.circle(pageW / 2, y + diameter / 2, diameter / 2 + 0.5, "S");
-    y += diameter + 6;
-  } catch {
-    y = 20;
-  }
 
   // ── NAME ───────────────────────────────────────────────────────────────────
   doc.setFont("helvetica", "bold");
