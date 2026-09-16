@@ -1,10 +1,26 @@
+import { useState } from "react";
 import SectionCard from "./SectionCard";
-import { FileDown } from "lucide-react";
+import { FileDown, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { generatePortfolioPDF } from "@/utils/generatePortfolioPDF";
+import { toast } from "sonner";
 import ngalatiImg from "../assets/ngalati.jpeg";
 
 export default function ProfileSection() {
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleGenerateCV = async () => {
+    setIsGenerating(true);
+    try {
+      await generatePortfolioPDF();
+      toast.success("Your professional CV is ready to download.");
+    } catch {
+      toast.error("Something went wrong while generating the CV.");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
   return (
     <SectionCard id="profile" title="Profile" className="group-hover:scale-[1.03] transition-transform duration-200">
       <div className="flex flex-col items-center text-center gap-3">
@@ -49,15 +65,24 @@ export default function ProfileSection() {
             wangungalati@gmail.com
           </a>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => { generatePortfolioPDF(); }}
-          className="mt-2 gap-2 border-primary/40 text-primary hover:bg-primary/10 hover:border-primary transition-colors"
-        >
-          <FileDown size={15} />
-          Generate PDF
-        </Button>
+        <div className="flex flex-col items-center gap-1.5 mt-3">
+          <Button
+            size="lg"
+            onClick={handleGenerateCV}
+            disabled={isGenerating}
+            className="gap-2 rounded-full px-7 py-6 font-semibold tracking-wide bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-md hover:shadow-lg hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 disabled:opacity-70 disabled:hover:scale-100"
+          >
+            {isGenerating ? (
+              <Loader2 size={17} className="animate-spin" />
+            ) : (
+              <FileDown size={17} />
+            )}
+            {isGenerating ? "Generating..." : "Generate Professional CV"}
+          </Button>
+          <span className="text-[11px] text-muted-foreground">
+            Downloads a print-ready PDF resume
+          </span>
+        </div>
       </div>
     </SectionCard>
   );

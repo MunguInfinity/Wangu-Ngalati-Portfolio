@@ -1,10 +1,13 @@
 import { jsPDF } from "jspdf";
 import {
+  professionalSummary,
   objective,
   educationData,
   skills,
   experience,
-  projects,
+  professionalProjects,
+  zelicoreProjects,
+  notableProjects,
   references,
 } from "../data/portfolioData";
 
@@ -86,6 +89,15 @@ export async function generatePortfolioPDF() {
     y += 5.5;
   }
   y += 5;
+
+  // ── PROFESSIONAL SUMMARY ─────────────────────────────────────────────────────
+  sectionTitle("Professional Summary");
+  const summaryLines = doc.splitTextToSize(professionalSummary, contentW) as string[];
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(9.5);
+  doc.setTextColor(...DARK);
+  doc.text(summaryLines, margin, y);
+  y += summaryLines.length * 5.2 + 8;
 
   // ── OBJECTIVE ──────────────────────────────────────────────────────────────
   sectionTitle("Objective");
@@ -193,9 +205,44 @@ export async function generatePortfolioPDF() {
     y += 8;
   }
 
+  // ── LINKED PROJECT LIST HELPER ───────────────────────────────────────────────
+  /** Renders "Name - description. link/platform" bullets, used by the two link-based project sections below. */
+  const linkedProjectList = (
+    items: { name: string; desc: string; url?: string; platform?: string }[]
+  ) => {
+    for (const item of items) {
+      const suffix = item.url ? ` ${item.url}` : item.platform ? ` ${item.platform}` : "";
+      const descLines = doc.splitTextToSize(
+        `${item.desc}${suffix}`,
+        contentW - 2
+      ) as string[];
+      checkPage(descLines.length * 5.2 + 7);
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(9.5);
+      doc.setTextColor(...DARK);
+      doc.text(item.name, margin, y);
+      y += 5;
+
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(...DARK);
+      doc.text(descLines, margin, y);
+      y += descLines.length * 5.2 + 2;
+    }
+    y += 4;
+  };
+
+  // ── SELECTED PROFESSIONAL PROJECTS ──────────────────────────────────────────
+  sectionTitle("Selected Professional Projects");
+  linkedProjectList(professionalProjects);
+
+  // ── SELECTED ZELICORE COLLABORATIVE PROJECTS ────────────────────────────────
+  sectionTitle("Selected Zelicore Collaborative Projects");
+  linkedProjectList(zelicoreProjects);
+
   // ── NOTABLE PROJECTS ───────────────────────────────────────────────────────
   sectionTitle("Notable Projects");
-  for (const project of projects) {
+  for (const project of notableProjects) {
     const descLines = doc.splitTextToSize(project.desc, contentW) as string[];
     checkPage(descLines.length * 5.2 + 16);
 
@@ -214,8 +261,15 @@ export async function generatePortfolioPDF() {
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9.5);
     doc.setTextColor(...GRAY);
-    doc.text(`- Technologies: ${project.tech}`, margin, y);
-    y += 8;
+    if (project.tech) {
+      doc.text(`- Technologies: ${project.tech}`, margin, y);
+      y += 8;
+    } else if (project.url) {
+      doc.text(`- ${project.url}`, margin, y);
+      y += 8;
+    } else {
+      y += 3;
+    }
   }
 
   // ── REFERENCES ─────────────────────────────────────────────────────────────
@@ -235,6 +289,10 @@ export async function generatePortfolioPDF() {
     y += 5;
     doc.text(`Tel: ${ref.phone}`, margin, y);
     y += 5;
+    if ("phone2" in ref && ref.phone2) {
+      doc.text(`Tel: ${ref.phone2}`, margin, y);
+      y += 5;
+    }
     doc.text(ref.address, margin, y);
     y += 9;
   }

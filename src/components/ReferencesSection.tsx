@@ -1,38 +1,5 @@
 import SectionCard from "./SectionCard";
-
-const references = [
-  {
-    name: "Mr. Choko",
-    title: "Human Resource Manager",
-    phone: "+2609775561852",
-    address: "KPTF Office Park, Lake Road, Lusaka, Zambia",
-  },
-  {
-    name: "Mr. Luckson Mwanambulo",
-    title: "Software Engineer",
-    phone: "+260966088441",
-    address: "Hobbiton Investments, Lusaka, Zambia",
-  },
-  {
-    name: "Mr. Zitha Tembo",
-    title: "Software Engineer",
-    phone: "+260976790772",
-    address: "Zambia Revenue Authority, Lusaka, Zambia",
-  },
-  {
-    name: "Mr. Sundu Sensenta",
-    title: "Chief Software Architect",
-    phone: "+260972365878",
-    address: "Riteware Technology, Lusaka, Zambia",
-  },
-  {
-    name: "Mr. Percy Nguni",
-    title: "Founder, E-Study & Software Developer",
-    phone: "+260967924233",
-    phone2: "+260974176847",
-    address: "E-Study, Zambia",
-  },
-];
+import { references } from "../data/portfolioData";
 
 export default function ReferencesSection() {
   return (

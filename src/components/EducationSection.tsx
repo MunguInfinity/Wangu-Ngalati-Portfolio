@@ -1,22 +1,5 @@
 import SectionCard from "./SectionCard";
-
-const educationData = [
-  {
-    title: "DMI St. Eugene University",
-    degree: "Bachelor of Computer Science (Software Engineering)",
-    years: "2016 - 2021",
-    notes: [
-      "Graduated with a GPA above 4.0",
-      "Awarded top student honors from 2017 to 2019",
-    ],
-  },
-  {
-    title: "David Kaunda National Technical High School",
-    degree: "Full Grade 12 Certificate",
-    years: "2012 - 2014",
-    notes: [],
-  },
-];
+import { educationData } from "../data/portfolioData";
 
 export default function EducationSection() {
   return (
