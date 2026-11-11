@@ -3,7 +3,7 @@
 // every code-level change automatically reflects in the generated PDF.
 
 export const professionalSummary =
-  "Software Engineer with 5+ years of experience in software development, system integration, backend engineering, cloud deployment, DevOps, IT support and technical leadership. Experienced in building and maintaining production web and mobile platforms, API integrations, payment and messaging services, real-time systems, and scalable media delivery solutions. Proficient in Java, JavaScript, Kotlin, Dart, Python, PHP, C/C++, SQL and Golang, with hands-on experience across Flutter, Laravel, Django, Node.js, React, Spring Boot, Firebase, AWS, GCP and Docker.";
+  "Software Engineer with 5+ years of experience in software development, system integration, backend engineering, cloud deployment, DevOps, IT support, technical leadership and operations management. Experienced in building and maintaining production web and mobile platforms, API integrations, payment and messaging services, real-time systems, scalable media delivery solutions, and Google AdSense website monetisation, complemented by experience in Open-Source Intelligence (OSINT) research and online investigations. Proficient in Java, JavaScript, Kotlin, Dart, Python, PHP, C/C++, SQL and Golang, with hands-on experience across Flutter, Laravel, Django, Node.js, React, Spring Boot, Firebase, AWS, GCP and Docker.";
 
 export const objective =
   "Highly motivated and detail-oriented Software Engineer with a strong background in software development, system integration, and problem-solving. Seeking a challenging position where my skills and expertise in various programming languages and technologies can contribute to the growth of a forward-thinking and innovative company.";
@@ -47,6 +47,13 @@ export const skills: Record<string, string[]> = {
     "Payment Gateway Integration", "SMS Integration", "Email Services Integration",
     "Real-time Service Integration",
   ],
+  "Monetisation & Intelligence Research": [
+    "Google AdSense Integration & Management",
+    "Website Ad Monetisation",
+    "OSINT (Open-Source Intelligence)",
+    "Online Investigations",
+    "Information Gathering & Analysis",
+  ],
   "Other Skills": [
     "UI/UX Design (Adobe XD, JustInMind)",
     "Game Development (Unreal Engine)",
@@ -59,8 +66,16 @@ export const skills: Record<string, string[]> = {
 export const experience = [
   {
     company: "EMU Technologies Limited",
-    role: "Software Lead Developer (Ongoing)",
-    period: "May 2025 – Present",
+    role: "Operations Manager (Ongoing)",
+    period: "September 2026 – Present",
+    description: [
+      "Promoted from Software Lead Developer to Operations Manager, overseeing the company's day-to-day operations.",
+    ],
+  },
+  {
+    company: "EMU Technologies Limited",
+    role: "Software Lead Developer",
+    period: "May 2025 – September 2026",
     description: [
       "Led the development team, assigning tasks, conducting code reviews, and reporting on performance to management.",
       "Developed and maintained 10+ client websites and platforms, including fiatzambia.com, abaleyadriving.com, quartanmining.com, dropshipltd.com, semassmetals.com, sophonzambia.com, komelazm.com, copperpotzm.com, kutwilamedia.com, and abaleya.name.",
@@ -68,6 +83,7 @@ export const experience = [
       "Managed backend development in PHP/Laravel with MySQL on AWS EC2, delivering features such as a daily quote system and automated SMS/in-app alerts for the Abaleya carpooling platform.",
       "Integrated Agora live streaming with WebSocket-based real-time view counts and comments, plus FFmpeg-based video watermarking and compression pipelines for optimized media delivery.",
       "Architected a Cloudflare Worker-based media proxy and adaptive bitrate streaming pipeline (AWS S3/MediaConvert, Cloudflare Stream/Images) to secure and optimize video delivery.",
+      "Implemented Google AdSense on company and client websites to enable and manage advertising-based website monetisation.",
       "Managed DNS configuration, Outlook email support, and general IT/hardware maintenance across the company.",
     ],
   },

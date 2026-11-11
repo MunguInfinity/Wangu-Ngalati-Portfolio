@@ -7,7 +7,7 @@ export default function ExperienceSection() {
       <div className="flex flex-col gap-7">
         {experience.map((exp) => (
           <div
-            key={exp.company}
+            key={`${exp.company}-${exp.role}`}
             className="transition duration-200 ease-in-out hover:scale-[1.02] hover:shadow-md hover:border-primary bg-muted/60 rounded p-2"
           >
             <div className="flex flex-wrap items-center gap-3 mb-1">
